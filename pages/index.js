@@ -25,7 +25,7 @@ export default function Home() {
     <Navbar />
       <Grid container spacing={2} p="20px 24px">
         { productos.map((producto) => (
-          <Grid key={producto.id} item xs={12} sm={6} md={3} xl={3}>
+          <Grid key={id} item xs={12} sm={6} md={3} xl={3}>
             <Card sx={{ maxWidth: "100%" }}>
               <CardMedia
                 component="img"
