@@ -72,20 +72,9 @@ const PokemonDetails = () => {
           </Card>
         </Box>
         </Grid>
-        {/* <h1>{pokemon.name}</h1>
-        <img
-          src={pokemon.sprites.other.home.front_shiny}
-          alt={pokemon.name}
-          width="200px"
-          height="200px"
-        />
-        <p>Peso: {pokemon.weight}kg</p>
-        <p>Altura: {pokemon.height}m</p>
-        <p>Especie: {pokemon.species.name}</p> */}
       </div>
     </>
   ) : (
-    // <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
     <h3>Cargando...</h3>
   );
 };
