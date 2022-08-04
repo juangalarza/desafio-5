@@ -1,38 +1,61 @@
 import React, { useState, useEffect } from "react";
-import Grid from "@mui/material/Grid";
+import { NextPage } from 'next';
+// import Grid from "@mui/material/Grid";
 import axios from "axios";
-import Navbar from '../components/Navbar';
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import Navbar from "../components/Navbar";
+import PokeCard from "../components/PokeCard";
+// import Card from "@mui/material/Card";
+// import CardActions from "@mui/material/CardActions";
+// import CardContent from "@mui/material/CardContent";
+// import CardMedia from "@mui/material/CardMedia";
+// import Button from "@mui/material/Button";
+// import Typography from "@mui/material/Typography";
+
 
 export default function Home() {
+  //const [productos, setProductos] = useState([]);
+  const [pokemons, setPokemons] = useState([]);
 
-  const [productos, setProductos] = useState([]);
+
+  // useEffect(() => {
+  //   axios
+  //     .get("https://pokeapi.co/api/v2/pokemon?limit=4")
+  //     .then((response) => setProductos(response.data.results))
+  //     .catch((error) => console.log(error));
+  // }, []);
+
+  const getPokemons = async () => {
+    const response = await axios
+    .get('https://pokeapi.co/api/v2/pokemon?limit=25',
+    )
+
+    setPokemons(response.data.results)
+  }
 
   useEffect(() => {
-    axios
-      .get("https://peticiones.online/api/products")
-      .then((response) => setProductos(response.data.results))
-      .catch((error) => console.log(error));
-  }, []);
+    getPokemons()
+  }, [])
 
   return (
     <>
-    <Navbar />
-      <Grid container spacing={2} p="20px 24px">
-        { productos.map((producto) => (
+      <Navbar />
+      <h1>Listado de Pokemons</h1>
+
+      <ul>
+        {pokemons.map((pokemon) => (
+          <PokeCard key={pokemon.name} name={pokemon.name} />
+        ))}
+      </ul>
+      {/* <Grid container spacing={2} p="20px 24px">
+        {productos.map((producto) => (
           <Grid key={producto.id} item xs={12} sm={6} md={3} xl={3}>
             <Card sx={{ maxWidth: "100%" }}>
-              <CardMedia
-                component="img"
-                height="auto"
-                image={producto.image}
-                alt={producto.description}
-              />
+                <CardMedia
+                  component="img"
+                  height="auto"
+                  image={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${producto.id}.png`}
+                  alt={producto.description}
+                />
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
                   {producto.name}
@@ -47,7 +70,7 @@ export default function Home() {
             </Card>
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
     </>
   );
 }

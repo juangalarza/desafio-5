@@ -1,16 +1,26 @@
+:root {
+  --dark-cyan: hsl(185, 75%, 39%);
+}
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--dark-cyan);
+  background-image: url("/bg-pattern-top.svg"),
+    url("/bg-pattern-bottom.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: right 50vw bottom 50vh, left 50vw top 50vh;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
-
+.capitalize {
+  text-transform: capitalize;
+}
 * {
   box-sizing: border-box;
 }
